@@ -1,0 +1,29 @@
+Q: How would you test that the API between the embedded and the cloud is working
+   as expected without having the real physical device?
+
+A: In general, API is tested by issuing API calls and checking if API response meets the requirements.
+   To test API as a system, we need to have all parts of the system, that depends on the API.
+   It will require to install `embedded` software in special environment, mocking the 'firmware'
+   and 'hardware' layers. Through mocked layers, tests will force 'embedded' to call API and then
+   check if 'embedded' is reacting in proper way (calling proper functions from mocked layers).
+   
+   However, testing methodology depends on what level we would like to test the API.
+   
+   We can test API as a software module. In this scenario API middleware will be installed
+   in mocked environment (with mocked server and slave). This approach will test if API
+   is calling proper functions form backend and properly handles receives data.
+   
+   API could also be tested as a server, including backend logic. In this scenario we are mocking
+   only the client with testing scripts. We can test API response time and robustness.
+   
+   Client API also could be tested with mocked API server. This test checks the integrity
+   of API calls from the client.
+   
+   
+   
+Q: How would you test that the API between
+   the embedded and the mobile is working as
+   expected without having the real physical device?
+   
+A: In this situation we have different wireless interface and most probably also the protocol.
+   Nevertheless, the testing approach to API is in principle the same as described above.
